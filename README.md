@@ -24,3 +24,7 @@ Sigue el enunciado de tu práctica para arrancar el overlay correcto. El entorno
 - Las pruebas de regresión (`make test`) y las de aceptación del ejercicio son distintas. Un TODO puede provocar un fallo esperado de aceptación; un fallo de compilación o entorno no es evidencia de que el patrón esté incompleto.
 - P06 requiere herramientas de Kubernetes, contexto y namespace asignados; no se necesitan credenciales Azure para los demás ejercicios.
 - Los checkpoints se entregan por etapas. Guarda cambios antes de pasar a otro; no uses reset destructivo ni copies soluciones de compañeros.
+
+## Enunciados de todo el curso
+
+Consulta el [índice de P00–P07](docs/enunciados/README.md) desde el primer día. **Los enunciados están disponibles antes que el código:** las implementaciones, los TODO y la solución de la práctica anterior se liberan por checkpoints. No intentes ejecutar una práctica cuyo código todavía no se ha publicado.
