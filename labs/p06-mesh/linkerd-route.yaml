@@ -12,7 +12,7 @@ spec:
   - backendRefs:
     - name: p06-inventory-v1
       port: 8080
-      weight: 50 # TODO: 100/0 then 80/20
+      weight: 100
     - name: p06-inventory-v2
       port: 8080
-      weight: 50
+      weight: 0

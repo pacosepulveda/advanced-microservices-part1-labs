@@ -1,6 +1,6 @@
 # Advanced Orders Platform — Microservicios avanzados, Parte 1
 
-**Checkpoint P07.** Continúa con [P07 — Incidente integrador](labs/p07-incident/README.md). Este checkpoint contiene una regresión deliberada; guarda tu trabajo previo.
+**Soluciones finales P01–P07.** Código acumulado de referencia, incluido el incidente P07 corregido y los manifiestos resueltos de P06. Los enunciados se conservan; para reproducir P07 antes de la corrección, usa `main`.
 
 ## Antes de comenzar
 Lee la [guía general del alumno](labs/GUIA-ALUMNO.md) para acceder, preparar Codespaces, guardar cambios y avanzar entre checkpoints.
@@ -24,7 +24,7 @@ Sigue el enunciado de tu práctica para arrancar el overlay correcto. El entorno
 - [P05 — Webhooks y gRPC](labs/p05-integrations/README.md)
 
 - [P06 — Service Mesh](labs/p06-mesh/README.md)
-- [P07 — Incidente integrador](labs/p07-incident/README.md) **(actual)**
+- [P07 — Incidente integrador](labs/p07-incident/README.md)
 
 P06 es independiente y no necesitas AKS ni kind para P07.
 
@@ -41,4 +41,6 @@ P06 es independiente y no necesitas AKS ni kind para P07.
 
 ## Soluciones de cierre
 
-La rama `soluciones-finales` contiene el código resuelto P01–P07 y los manifiestos de referencia P06. Usa primero `main` si quieres reproducir el incidente P07; consulta la solución después del intento.
+Esta rama `soluciones-finales` contiene el código resuelto P01–P07 y los manifiestos de referencia P06. Usa primero `main` si quieres reproducir el incidente P07; consulta la solución después del intento.
+
+Consulta [las soluciones comentadas](solutions/README.md).

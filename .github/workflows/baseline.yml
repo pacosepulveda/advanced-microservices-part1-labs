@@ -28,24 +28,19 @@ jobs:
       - run: make p04-test
       - run: make p04-up
       - run: make verify
-      - name: Reproduce expected P07 incident
-        run: |
-          set +e
-          bash scripts/verify-p07.sh
-          rc=$?
-          set -e
-          test "$rc" -eq 42
+      - run: make p04-verify
+      - run: bash scripts/verify-p07.sh
       - run: make p04-down
       - run: cmp services/orders/src/main/proto/shipping.proto services/shipping/src/main/proto/shipping.proto
       - run: make p05-up
       - run: make verify
       - run: make p05-verify
-      - name: Validate P06 starter files
+      - name: Validate P06 reference files
         run: |
           for script in scripts/p06-{render,sample,linkerd-prepare,tools}.sh; do bash -n "$script"; done
-          grep -q TODO-select-inventory labs/p06-mesh/service.yaml
-          grep -q TODO-v1 labs/p06-mesh/istio.yaml
-          grep -q TODO labs/p06-mesh/linkerd-route.yaml
+          grep -q 'app: p06-inventory' labs/p06-mesh/service.yaml
+          grep -q 'version: v1' labs/p06-mesh/istio.yaml
+          grep -q 'weight: 100' labs/p06-mesh/linkerd-route.yaml
           test -f labs/p06-mesh/workloads.yaml
           test -f labs/p06-mesh/version-services.yaml
       - if: always()
@@ -56,17 +51,3 @@ jobs:
         run: make p03-down
       - if: always()
         run: make down
-  tag-p07-release:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.head_commit.message == 'Release student checkpoint p07'
-    needs: regression
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Tag audited P07 release commit
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api -X POST "repos/$GITHUB_REPOSITORY/git/refs" \
-            -f ref='refs/tags/checkpoint-p07' \
-            -f sha="$GITHUB_SHA"

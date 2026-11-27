@@ -3,25 +3,25 @@ kind: DestinationRule
 metadata:
   name: p06-inventory
 spec:
-  host: p06-inventory
   exportTo: ["."]
+  host: p06-inventory
   subsets:
   - name: v1
-    labels: {version: TODO-v1}
+    labels: {version: v1}
   - name: v2
-    labels: {version: TODO-v2}
+    labels: {version: v2}
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: p06-inventory
 spec:
-  hosts: [p06-inventory]
   exportTo: ["."]
+  hosts: [p06-inventory]
   gateways: [mesh]
   http:
   - route:
     - destination: {host: p06-inventory, subset: v1}
-      weight: 50 # TODO: first 100/0, then 80/20
+      weight: 100
     - destination: {host: p06-inventory, subset: v2}
-      weight: 50
+      weight: 0

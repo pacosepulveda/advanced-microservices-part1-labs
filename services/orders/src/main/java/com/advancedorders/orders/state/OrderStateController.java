@@ -151,7 +151,10 @@ public class OrderStateController {
                 default -> throw new IllegalStateException("Unexpected payment status");
             };
             case "PAID" -> "CONFIRMED";
-            case "PAYMENT_FAILED" -> "RELEASED";
+            case "PAYMENT_FAILED" -> {
+                if(!"RELEASED".equals(release(s))) throw new IllegalStateException("Release not confirmed");
+                yield "RELEASED";
+            }
             default -> null;
         };
         return kind==null?s:recordTransition(s,kind);
